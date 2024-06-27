@@ -1,0 +1,124 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crop Yield Prediction System</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-image: url('https://images.unsplash.com/photo-1591268315196-2c9b815d71cd?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'); /* Replace with your image URL */
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            color: #fff;
+        }
+
+        .container {
+            background-color: rgba(0, 0, 0, 0.6); /* Transparent background */
+            padding: 2em;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            width: 90%;
+            max-width: 600px;
+        }
+
+        h1 {
+            margin-bottom: 1em;
+            color: #f4f3f3; /* Gold color */
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .input-group {
+            margin-bottom: 1em;
+            text-align: left;
+        }
+
+        .input-group label {
+            display: block;
+            margin-bottom: 0.5em;
+            color: #e9e8e5; /* Gold color */
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 0.75em;
+            border: 1px solid #030303; /* Gold border */
+            border-radius: 5px;
+            background-color: rgba(0, 0, 0, 0.6);
+            color: #f2efef;
+        }
+
+        button {
+            background: linear-gradient(45deg, #4eb152, #e0b255); /* Vibrant orange gradient */
+            color: rgb(233, 233, 236);
+            padding: 1em;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: background 0.3s ease-in-out;
+        }
+
+        button:hover {
+            background: linear-gradient(45deg, #1d1c1c, #0f0f0f); /* Reverse gradient */
+        }
+
+        .result {
+            margin-top: 2em;
+            color: #fefeff; /* Gold color */
+        }
+
+        .result h2 {
+            margin-bottom: 0.5em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Crop Yield Prediction System</h1>
+        <form action="/predict" method="post">
+            <div class="input-group">
+                <label for="Year">Year</label>
+                <input type="text" id="Year" name="Year" placeholder="e.g. 2013" required>
+            </div>
+            <div class="input-group">
+                <label for="average_rain_fall_mm_per_year">Average Rainfall (mm/year)</label>
+                <input type="text" id="average_rain_fall_mm_per_year" name="average_rain_fall_mm_per_year" placeholder="e.g. 800" required>
+            </div>
+            <div class="input-group">
+                <label for="pesticides_tonnes">Pesticides (tonnes)</label>
+                <input type="text" id="pesticides_tonnes" name="pesticides_tonnes" placeholder="e.g. 1500" required>
+            </div>
+            <div class="input-group">
+                <label for="avg_temp">Average Temperature (°C)</label>
+                <input type="text" id="avg_temp" name="avg_temp" placeholder="e.g. 25.5" required>
+            </div>
+            <div class="input-group">
+                <label for="Area">Area</label>
+                <input type="text" id="Area" name="Area" placeholder="e.g. Brazil" required>
+            </div>
+            <div class="input-group">
+                <label for="Item">Item</label>
+                <input type="text" id="Item" name="Item" placeholder="e.g. Wheat" required>
+            </div>
+            <button type="submit">Predict</button>
+        </form>
+        <div class="result">
+            <h2>Predicted Yield:</h2>
+            <p>{{ prediction }}</p>
+        </div>
+    </div>
+</body>
+</html>
